@@ -89,13 +89,16 @@ class Car {
   fill(gallons){
     this.tank += gallons;
   }
-  /*drive(distance){
-    if(this.tank >= distance/this.milesPerGallon){
+  drive(distance){
+    let driveDistance = this.tank * this.milesPerGallon;
+    if(driveDistance >= distance){
       return this.odometer += distance, this.tank -= distance/this.milesPerGallon; 
     }else{
-      
+      this.tank = 0;
+      this.odometer += driveDistance;
+      return `I ran out of fuel at ${this.odometer}`
     }
-  }*/
+  }
 }
 /*
   TASK 3
@@ -144,8 +147,8 @@ class Instructor extends Lambdasian{
   demo(subject){
     return `Today we are learning about ${subject}`;
   }
-  grade(Student, subject){
-    return `${Student.name} receives a perfect score on ${subject}`;
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -169,16 +172,16 @@ class Student extends Lambdasian{
     super(atts)
     this.previousBackground = atts.previousBackground;
     this.className = atts.className;
-    this.favSubjects = ['HTML', 'CSS', 'JS'];
+    this.favSubjects = atts.favSubjects
   }
   listSubjects(){
-    return this.favSubjects.toString;
+    return this.favSubjects.toString();
   }
   PRAssignment(subject){
-    return `${Student.name} has submitted a PR for ${subject}`;
+    return `${this.name} has submitted a PR for ${subject}`;
   }
   sprintChallenge(subject){
-    return `${Student.name} has begun sprint challenge on ${subject}`;
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 
 }
@@ -203,10 +206,10 @@ class ProjectManager extends Instructor{
     this.favInstructor = atts.favInstructor
   }
   standUp(channel){
-    return `${ProjectManager.name} announces to ${channel}, @channel standy times!`;
+    return `${this.name} announces to ${channel}, @channel standy times!`;
   }
-  debugsCode(Student, subject){
-    return `${ProjectManager.name} debugs ${Student.name}'s code on ${subject}`;
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
 
