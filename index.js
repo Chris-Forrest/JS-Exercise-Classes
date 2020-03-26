@@ -80,9 +80,23 @@ console.log(mom.toString);*/
 */
 
 class Car {
-
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank= 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank += gallons;
+  }
+  /*drive(distance){
+    if(this.tank >= distance/this.milesPerGallon){
+      return this.odometer += distance, this.tank -= distance/this.milesPerGallon; 
+    }else{
+      
+    }
+  }*/
 }
-
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -96,7 +110,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(atts){
+    this.name = atts.name;
+    this.age = atts.age;
+    this.location = atts.location
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
 }
 
 /*
@@ -113,8 +134,16 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(atts){
+    super(atts)
+    this.specialty = atts.specialty;
+    this.favLanguage = atts.favLanguage;
+    this.catchPhrase = atts.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }
 }
 
 /*
