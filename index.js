@@ -144,6 +144,9 @@ class Instructor extends Lambdasian{
   demo(subject){
     return `Today we are learning about ${subject}`;
   }
+  grade(Student, subject){
+    return `${Student.name} receives a perfect score on ${subject}`;
+  }
 }
 
 /*
@@ -161,7 +164,22 @@ class Instructor extends Lambdasian{
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian{
+  constructor(atts){
+    super(atts)
+    this.previousBackground = atts.previousBackground;
+    this.className = atts.className;
+    this.favSubjects = ['HTML', 'CSS', 'JS'];
+  }
+  listSubjects(){
+    return this.favSubjects.toString;
+  }
+  PRAssignment(subject){
+    return `${Student.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject){
+    return `${Student.name} has begun sprint challenge on ${subject}`;
+  }
 
 }
 
@@ -178,8 +196,18 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(atts){
+    super(atts)
+    this.gradClassName = atts.gradClassName;
+    this.favInstructor = atts.favInstructor
+  }
+  standUp(channel){
+    return `${ProjectManager.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(Student, subject){
+    return `${ProjectManager.name} debugs ${Student.name}'s code on ${subject}`;
+  }
 }
 
 /*
